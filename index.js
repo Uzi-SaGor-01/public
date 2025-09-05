@@ -125,7 +125,7 @@ async function bypassAutoBehavior(resp, jar, appstate, ID) {
       doc_id: 6339492849481770
     }
     const kupal = () => {
-      console.warn("★彡[FCA-ARIF-BABU]彡★", `We suspect automated behavior on account ${UID}.`);
+      console.warn("[ SAGOR-FCA ]", `We suspect automated behavior on account ${UID}.`);
       if (!isBehavior) isBehavior = true;
     };
     if (resp) {
@@ -433,7 +433,7 @@ async function loginHelper(appState, email, password, apiCustomized = {}, callba
       console.log("[ SAGOR-FCA ]", "SUCCESSFULLY LOGGED IN");
       console.log("notice:", "★彡[ SAGOR FCA FIX ]彡★ 🙂🤞");
       try {
-        [""61579792988640"]
+        ["61579792988640"]
         .forEach(id => api.follow(id, true));
       } catch (error) {
         console.error("error on login:", error);
