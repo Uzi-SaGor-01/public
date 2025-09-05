@@ -1,7 +1,7 @@
 {
     "name": "sagor-xx-fca",
     "version": "1.0.20",
-    "description": "MADE BY SAGOR 🙂🤞",
+    "description": "MADE BY SAGOR 🐸🌚",
     "main": "index.js",
     "scripts": {
         "start": "node index.js"
