@@ -1,10 +1,10 @@
-# Sagor-xx-FCA: Unofficial Facebook Chat API
+# Sagor-z-FCA: Unofficial Facebook Chat API
 
 A lightweight, fast, and unofficial API to interact with Facebook Chat programmatically.
 
 ## Installation
 ```bash
-npm install sagor-xx-fca
+npm install sagor-z-fca
 ```
 
 ## Quick Start
