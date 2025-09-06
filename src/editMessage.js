@@ -1,4 +1,4 @@
-"use_strict";
+"use strict";
 
 const { generateOfflineThreadingID } = require('../utils');
 
@@ -15,13 +15,14 @@ module.exports = function (defaultFuncs, api, ctx) {
 
   return function editMessage(text, messageID, callback) {
 
-
     if (!ctx.mqttClient) {
       throw new Error('Not connected to MQTT');
     }
 
-    ctx.wsReqNumber ??= 0;
-    ctx.wsTaskNumber ??= 0;
+    // FIX: পুরানো Node.js compatible
+    ctx.wsReqNumber = ctx.wsReqNumber ?? 0;
+    ctx.wsTaskNumber = ctx.wsTaskNumber ?? 0;
+
     ctx.wsReqNumber += 1;
     ctx.wsTaskNumber += 1;
 
@@ -53,7 +54,7 @@ module.exports = function (defaultFuncs, api, ctx) {
     content.payload.tasks.push(task);
     content.payload = JSON.stringify(content.payload);
 
-  /* if (isCallable(callback)) ctx.reqCallbacks[ctx.wsReqNumber] = callback; */
-   ctx.mqttClient.publish('/ls_req', JSON.stringify(content), { qos: 1, retain: false });
+    /* if (isCallable(callback)) ctx.reqCallbacks[ctx.wsReqNumber] = callback; */
+    ctx.mqttClient.publish('/ls_req', JSON.stringify(content), { qos: 1, retain: false });
   };
 }
