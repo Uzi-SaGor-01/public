@@ -1,17 +1,17 @@
-# Sagor-z-FCA: Unofficial Facebook Chat API
+# public-FCA: Unofficial Facebook Chat API
 
 A lightweight, fast, and unofficial API to interact with Facebook Chat programmatically.
 
 ## Installation
 ```bash
-npm install sagor-z-fca
+npm install public-fca
 ```
 
 ## Quick Start
 
 ### Login Example
 ```javascript
-const login = require('sagor-xx-fca');
+const login = require('public-fca');
 
 async function login() {
   try {
@@ -32,7 +32,7 @@ login();
 ### Send Message Example
 ```javascript
 const api = await login();
-api.sendMessage("Hello from sagor-xx-FCA!", "friend_user_id");
+api.sendMessage("Hello from public-FCA!", "friend_user_id");
 ```
 
 ### Listen for Messages
