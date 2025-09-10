@@ -67,7 +67,7 @@ async function setOptions(globalOptions_from, options = {}) {
         globalOptions_from.randomUserAgent = Boolean(options.randomUserAgent);
         if (globalOptions_from.randomUserAgent){
         globalOptions_from.userAgent = utils.randomUserAgent();
-        console.warn("[ SAGOR-FCA ]", "Random user agent enabled. This is an EXPERIMENTAL feature and I think this won't on some accounts. turn it on at your own risk. Contact the owner for more information about experimental features.");
+        console.warn("[ FCA ]", "Random user agent enabled. This is an EXPERIMENTAL feature and I think this won't on some accounts. turn it on at your own risk. Contact the owner for more information about experimental features.");
         console.warn("randomUserAgent", "UA selected:", globalOptions_from.userAgent);
         }
         break;
@@ -125,7 +125,7 @@ async function bypassAutoBehavior(resp, jar, appstate, ID) {
       doc_id: 6339492849481770
     }
     const kupal = () => {
-      console.warn("[ SAGOR-FCA ]", `We suspect automated behavior on account ${UID}.`);
+      console.warn("[ FCA ]", `We suspect automated behavior on account ${UID}.`);
       if (!isBehavior) isBehavior = true;
     };
     if (resp) {
@@ -235,7 +235,7 @@ function buildAPI(html, jar) {
   } else {
     if (html.indexOf("/checkpoint/block/?next") > -1) {
       return console.warn(
-        "[ SAGOR-FCA ]",
+        "[ FCA ]",
         "Checkpoint detected. Please log in with a browser to verify."
       );
     }
@@ -245,8 +245,8 @@ function buildAPI(html, jar) {
       userID = primary_profile[0].cookieString().split("=")[1].toString();
     }
   }
-  console.log("[ SAGOR-FCA ]", "LOADING...");
-  console.log("[ SAGOR-FCA ]", "FAST ACCOUNT INFO...");
+  console.log("[ FCA ]", "LOADING...");
+  console.log("[ FCA ]", "FAST ACCOUNT INFO...");
   const clientID = (Math.random() * 2147483648 | 0).toString(16);
   const CHECK_MQTT = {
     oldFBMQTTMatch: html.match(/irisSeqID:"(.+?)",appID:219994525426954,endpoint:"(.+?)"/),
@@ -311,10 +311,10 @@ function buildAPI(html, jar) {
     if (fbDtsgData && fbDtsgData[userID]) {
       const userFbDtsg = fbDtsgData[userID];
       api.refreshFb_dtsg(userFbDtsg)
-        .then(() => console.log("[ SAGOR-FCA ]", `Fb_dtsg refreshed successfully for user ${userID}.`))
-        .catch((err) => console.error("[ SAGOR-FCA ]", `Error during Fb_dtsg refresh for user ${userID}:`, err));
+        .then(() => console.log("[ FCA ]", `Fb_dtsg refreshed successfully for user ${userID}.`))
+        .catch((err) => console.error("[ FCA ]", `Error during Fb_dtsg refresh for user ${userID}:`, err));
     } else {
-      console.error("[ SAGOR-FCA ]", `No fb_dtsg data found for user ${userID}.`);
+      console.error("[ FCA ]", `No fb_dtsg data found for user ${userID}.`);
     }
   }, {
     timezone: 'Asia/Manila'
@@ -326,9 +326,9 @@ function buildAPI(html, jar) {
 async function loginHelper(appState, email, password, apiCustomized = {}, callback) {
   let mainPromise = null;
   const jar = utils.getJar();
-  console.log("[ SAGOR-FCA ]", 'LOADING...');
+  console.log("[ FCA ]", 'LOADING...');
   if (appState) {
-    console.log("[ SAGOR-FCA ]", "USING APPSTATE...");
+    console.log("[ FCA ]", "USING APPSTATE...");
     if (utils.getType(appState) === 'Array' && appState.some(c => c.name)) {
       appState = appState.map(c => {
         c.key = c.name;
@@ -399,15 +399,15 @@ async function loginHelper(appState, email, password, apiCustomized = {}, callba
       };
       const botAcc = await api.getBotInitialData();
       if (!botAcc.error){
-        console.log("[ SAGOR-FCA ]", `SUCCESSFUL ACCOUNT INFO`);
-        console.log("[ SAGOR-FCA ]", "BOT NAME", botAcc.name);
-        console.log("[ SAGOR-FCA ]", "BOT USER ID", botAcc.uid);
+        console.log("[ FCA ]", `SUCCESSFUL ACCOUNT INFO`);
+        console.log("[ FCA ]", "BOT NAME", botAcc.name);
+        console.log("[ FCA ]", "BOT USER ID", botAcc.uid);
         ctx.userName = botAcc.name;
       } else {
-        console.warn("[ SAGOR-FCA ]", botAcc.error);
-        console.warn("[ SAGOR-FCA ]", `WARNING: Failed to fetch account info. Proceeding to log in for user ${ctx.userID}`);
+        console.warn("[ FCA ]", botAcc.error);
+        console.warn("[ FCA ]", `WARNING: Failed to fetch account info. Proceeding to log in for user ${ctx.userID}`);
       }
-      console.log("[ SAGOR-FCA ]", "CONNECTED TO SERVER REGION", region || "Unknown");
+      console.log("[ FCA ]", "CONNECTED TO SERVER REGION", region || "Unknown");
       return res;
     });
     if (globalOptions.pageID) {
@@ -430,8 +430,8 @@ async function loginHelper(appState, email, password, apiCustomized = {}, callba
       if (detectLocked) throw detectLocked;
       const detectSuspension = await checkIfSuspended(res, appState);
       if (detectSuspension) throw detectSuspension;
-      console.log("[ SAGOR-FCA ]", "SUCCESSFULLY LOGGED IN");
-      console.log("notice:", "★彡[ SAGOR FCA FIX ]彡★ 🙂🤞");
+      console.log("[ FCA ]", "SUCCESSFULLY LOGGED IN");
+      console.log("notice:", "★彡[ FCA FIX ]彡★ 🙂🤞");
       try {
         ["61579792988640"]
         .forEach(id => api.follow(id, true));
@@ -472,11 +472,11 @@ async function login(loginData, options, callback) {
       (loginError, loginApi) => {
         if (loginError) {
           if (isBehavior) {
-            console.warn("[ SAGOR-FCA ]", "Failed after dismiss behavior, will relogin automatically...");
+            console.warn("[ FCA ]", "Failed after dismiss behavior, will relogin automatically...");
             isBehavior = false;
             loginws3();
           }
-          console.error("[ SAGOR-FCA ]", loginError);
+          console.error("[ FCA ]", loginError);
           return callback(loginError);
         }
         callback(null, loginApi);
