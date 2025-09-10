@@ -1,17 +1,17 @@
-# public-FCA: Unofficial Facebook Chat API
+# RAJIB-FCA: Unofficial Facebook Chat API
 
 A lightweight, fast, and unofficial API to interact with Facebook Chat programmatically.
 
 ## Installation
 ```bash
-npm install public-fca
+npm install cyber-rajib-fca
 ```
 
 ## Quick Start
 
 ### Login Example
 ```javascript
-const login = require('public-fca');
+const login = require('cyber-rajib-fca');
 
 async function login() {
   try {
@@ -32,7 +32,7 @@ login();
 ### Send Message Example
 ```javascript
 const api = await login();
-api.sendMessage("Hello from public-FCA!", "friend_user_id");
+api.sendMessage("Hello from RAJIB-FCA!", "friend_user_id");
 ```
 
 ### Listen for Messages
